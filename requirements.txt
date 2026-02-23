@@ -1,0 +1,7 @@
+numpy
+matplotlib
+plotly
+PyQt6
+pandas
+openpyxl
+tqdm
