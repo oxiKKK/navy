@@ -11,3 +11,4 @@ python cv1.py
 ```
 python cv2.py
 ```
+![](images/xor_loss.png)
