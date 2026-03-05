@@ -27,13 +27,16 @@ class NeuralNetworkXOR:
 
     def forward(self, inputs):
         # Forward pass: z vstupu spocitame aktivace hidden vrstvy a finalni vystup.
+        # vynasobim vstupy vahami
         hidden_net = inputs @ self.weights_hidden
         hidden_output = self.sigmoid(hidden_net)
 
+        # [h1, h2, 1]
         hidden_with_bias = np.concatenate(
             [hidden_output, np.ones((hidden_output.shape[0], 1))], axis=1
         )
         output_net = hidden_with_bias @ self.weights_output
+        # aktivace
         output = self.sigmoid(output_net)
 
         return hidden_output, hidden_with_bias, output
@@ -45,15 +48,16 @@ class NeuralNetworkXOR:
             hidden_output, hidden_with_bias, output = self.forward(inputs)
 
             error = targets - output
+            # mean square error
             loss = np.mean(0.5 * np.square(error))
             loss_history.append(loss)
 
-            # Backpropagation: nejdriv gradient na vystupu, potom preneseni chyby do hidden vrstvy.
+            # Backpropagation: sireni chyby zpet
             delta_output = error * self.sigmoid_derivative(output)
             hidden_error = delta_output @ self.weights_output[:-1].T
             delta_hidden = hidden_error * self.sigmoid_derivative(hidden_output)
 
-            # Gradientni krok pro obe vrstvy.
+            # Gradient descent; update vah
             self.weights_output += (
                 self.learning_rate * hidden_with_bias.T @ delta_output
             )
