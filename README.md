@@ -12,3 +12,10 @@ python cv1.py
 python cv2.py
 ```
 ![](images/xor_loss.png)
+
+# CV3 - Hopfield network
+
+```
+python cv3.py
+```
+![](images/hopfield_recovery.png)
