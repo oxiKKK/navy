@@ -19,3 +19,11 @@ python cv2.py
 python cv3.py
 ```
 ![](images/hopfield_recovery.png)
+
+# CV4 - Q-learning, Find the cheese
+
+```
+python cv4.py
+```
+
+![](images/qlearning_result.png)
