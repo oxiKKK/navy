@@ -57,13 +57,13 @@ while len(HOLES) < GRID_SIZE:
 
 
 def train_q_learning():
-    # Q-table ma pro kazdy stav 4 mozne akce: nahoru, dolu, doleva, doprava.
+    # Q-tabulka ma pro kazdy stav 4 mozne akce: nahoru, dolu, doleva, doprava.
     q_table = np.zeros((GRID_SIZE * GRID_SIZE, 4))
     episode_rewards = []
     moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     epsilon = EPSILON
 
-    # Pro kazdou epizodu zacneme na startu a pokusime se dosahnout cil.
+    # Pro kazdou epochu zacneme na startu a pokusime se dosahnout cil.
     for _ in range(EPISODES):
         position = START
         total_reward = 0
@@ -92,17 +92,17 @@ def train_q_learning():
 
             # jsme v dire? penalizace a navrat na start
             if next_position in HOLES:
-                reward = -100
+                transition_reward = -100
                 done = False
                 next_position = START
             # jsme v cili?
             elif next_position == GOAL:
-                reward = 100
+                transition_reward = 100
                 done = True
             # posouvame se
             else:
                 next_distance = manhattan_distance(next_position, GOAL)
-                reward = -1 + 3 * (current_distance - next_distance)
+                transition_reward = -1 + 3 * (current_distance - next_distance)
                 done = False
 
             # Aktualizace Q-hodnoty podle Bellmanovy rovnice
@@ -110,12 +110,13 @@ def train_q_learning():
             next_state = get_state_index(next_position)
             current_q_value = q_table[state, action]
             max_next_q_value = 0 if done else np.max(q_table[next_state])
+            target_q_value = transition_reward + DISCOUNT_FACTOR * max_next_q_value
 
             q_table[state, action] = current_q_value + LEARNING_RATE * (
-                reward + DISCOUNT_FACTOR * max_next_q_value - current_q_value
+                target_q_value - current_q_value
             )
 
-            total_reward += reward
+            total_reward += transition_reward
             position = next_position
 
             if done:
