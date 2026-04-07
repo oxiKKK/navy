@@ -27,3 +27,11 @@ python cv4.py
 ```
 
 ![](images/qlearning_result.png)
+
+# CV6 - L-systems
+
+```
+python cv6.py
+```
+
+![](images/lsystems.png)
