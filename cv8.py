@@ -54,6 +54,8 @@ def compute_mandelbrot(view, width, height):
         z_values[active_mask] = (
             z_values[active_mask] * z_values[active_mask] + complex_plane[active_mask]
         )
+
+        # Utekli jsme z hodnoty, ktere jsou mimo kruh o polomeru 2
         escaped = np.greater(np.abs(z_values), 2.0, where=active_mask)
         just_escaped = escaped & active_mask
         escape_iterations[just_escaped] = iteration
