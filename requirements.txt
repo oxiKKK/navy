@@ -1,5 +1,6 @@
 numpy
 matplotlib
+gymnasium[classic-control]
 plotly
 PyQt6
 pandas

@@ -35,3 +35,11 @@ python cv6.py
 ```
 
 ![](images/lsystems.png)
+
+# CV8 - Mandelbrot Zoom
+
+```
+python cv8.py
+```
+
+![](images/mandelbrot_zoom.png)
