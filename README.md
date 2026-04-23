@@ -43,3 +43,11 @@ python cv8.py
 ```
 
 ![](images/mandelbrot_zoom.png)
+
+# CV9 - Fraktalni 2D krajina
+
+```
+python cv9.py
+```
+
+![](images/fractal_landscape.png)
