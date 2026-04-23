@@ -26,32 +26,32 @@ class TerrainLayer:
 LAYERS = (
     TerrainLayer(
         name="Puda",
-        start_y=0.18,
-        end_y=0.14,
+        start_y=0.2,
+        end_y=0.15,
         initial_offset=0.025,
-        roughness=0.55,
-        min_height=0.09,
-        max_height=0.24,
+        roughness=0.50,
+        min_height=0.1,
+        max_height=0.25,
         color="#8f4e00",
     ),
     TerrainLayer(
         name="Skaly",
-        start_y=0.34,
+        start_y=0.35,
         end_y=0.30,
-        initial_offset=0.040,
-        roughness=0.57,
-        min_height=0.27,
-        max_height=0.43,
+        initial_offset=0.04,
+        roughness=0.60,
+        min_height=0.30,
+        max_height=0.45,
         color="#101010",
     ),
     TerrainLayer(
         name="Vegetace",
         start_y=0.70,
-        end_y=0.48,
+        end_y=0.50,
         initial_offset=0.085,
         roughness=0.60,
-        min_height=0.52,
-        max_height=0.82,
+        min_height=0.50,
+        max_height=0.80,
         color="#118c1b",
     ),
 )
@@ -62,6 +62,7 @@ def midpoint_displacement(start_y, end_y, iterations, initial_offset, roughness,
     offset = initial_offset
 
     for _ in range(iterations):
+        # pole pro nove body
         refined = np.empty(heights.size * 2 - 1, dtype=float)
         refined[0::2] = heights
 
@@ -71,6 +72,8 @@ def midpoint_displacement(start_y, end_y, iterations, initial_offset, roughness,
         # vypocet noveho bodu jako prumer sousednich + perbutace
         refined[1::2] = ((heights[1:] + heights[:-1]) / 2) + perbutation
         heights = refined
+
+        # s narustajici iteracemi se offset zmensuje, aby krajina byla jemnejsi
         offset *= roughness
 
     x_axis = np.linspace(0.0, 1.0, heights.size)
