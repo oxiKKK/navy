@@ -11,6 +11,7 @@ python cv1.py
 ```
 python cv2.py
 ```
+
 ![](images/xor_loss.png)
 
 # CV3 - Hopfield network
@@ -18,6 +19,7 @@ python cv2.py
 ```
 python cv3.py
 ```
+
 ![](images/hopfield_recovery.png)
 
 # CV4 - Q-learning, Find the cheese
@@ -36,7 +38,7 @@ python cv6.py
 
 ![](images/lsystems.png)
 
-# CV8 - Mandelbrot Zoom
+# CV8 - Mandelbrot set
 
 ```
 python cv8.py
@@ -51,3 +53,11 @@ python cv9.py
 ```
 
 ![](images/fractal_landscape.png)
+
+# CV10 - Bifurcation
+
+```
+python cv10.py
+```
+
+![](images/logistic_bifurcation.png)
