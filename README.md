@@ -61,3 +61,10 @@ python cv10.py
 ```
 
 ![](images/logistic_bifurcation.png)
+
+# CV12 - Forest fire (cellular automaton)
+
+```
+python cv12.py
+```
+![](images/forest.png)
